@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Deck{
+        constructor(){
+            this.num = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+            this.suit = ['D', 'H', 'S', 'C'];
+            this.deck = [];
+        }
+        initCards(){
+            let suit = this.suit
+            let num = this.num
+            for(var i = 0; i < suit.length; i++){ // starts a for loop looking at each suit 
+                for(var k = 0; k < num.length; k++){ // second for loop matches each suit to a number
+                    this.deck.push(num[k] + suit[i]) // this pushes that combination into the empty deck
+                }
+            }
+            return this.deck;
+        }
+        shuffle(array) {
+            var m = array.length, t, i;
+            // While there remain elements to shuffle…
+            while (m) {
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+                // And swap it with the current element.
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
+            return array;
+        }
+        reset(){
+            this.deck = [];
+            return this;
+        }
+        deal(){
+            let card = this.deck.pop()
+            return card
+        }
+    }
+    
+    let deck1 = new Deck()
+    console.log(deck1.initCards())
+    console.log(deck1.deck)
+    console.log(deck1.shuffle(deck1.deck))
+    console.log(deck1.deck)
+    // console.log(deck1.reset())
+    console.log(deck1.deal())
+    console.log(deck1.deal())
+    console.log(deck1.deck)
+    
+</script>
+</html>
